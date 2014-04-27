@@ -19,9 +19,9 @@ var Asserts = []Assert{
 	Assert{"ja/broken_utf8.txt", UTF8},
 }
 
-func TestIdentifyType(t *testing.T) {
+func TestIdentifyTypeByPath(t *testing.T) {
 	for _, f := range Asserts {
-		fileType := IdentifyType("../../files/" + f.path)
+		fileType := IdentifyTypeByPath("../../files/" + f.path)
 		if fileType != f.fileType {
 			t.Errorf("%s should be %s.", f.path, f.fileType)
 		}
