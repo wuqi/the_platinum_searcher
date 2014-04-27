@@ -13,7 +13,16 @@ const (
 	SHIFTJIS = "Shift_JIS"
 )
 
-func IdentifyType(path string) string {
+func IdentifyTypeByPath(path string) string {
+	file, err := os.Open(path)
+	if err != nil {
+		return ERROR
+	}
+	defer file.Close()
+	return IdentifyType(file)
+}
+
+func IdentifyType(handle *os.File) string {
 
 	var (
 		suspiciousBytes = 0
@@ -22,15 +31,9 @@ func IdentifyType(path string) string {
 		likelyShiftjis  = 0
 	)
 
-	file, err := os.Open(path)
-	if err != nil {
-		return ERROR
-	}
-	defer file.Close()
-
-	stat, _ := file.Stat()
+	stat, _ := handle.Stat()
 	bs := make([]byte, stat.Size())
-	file.Read(bs)
+	handle.Read(bs)
 
 	var length = len(bs)
 	var total = length

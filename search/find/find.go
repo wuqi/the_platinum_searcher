@@ -70,7 +70,7 @@ func (self *Finder) findFile(root string, pattern *pattern.Pattern) {
 		}
 		fileType := ""
 		if self.Option.FilesWithRegexp == "" {
-			fileType = file.IdentifyType(path)
+			fileType = file.IdentifyTypeByPath(path)
 			if fileType == file.ERROR || fileType == file.BINARY {
 				return nil, ig
 			}
