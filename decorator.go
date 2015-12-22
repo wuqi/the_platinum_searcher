@@ -10,7 +10,7 @@ const (
 	ColorReset      = "\x1b[0m\x1b[K"
 	ColorLineNumber = "\x1b[1;33m"  /* yellow with black background */
 	ColorPath       = "\x1b[1;32m"  /* bold green */
-	ColorMatch      = "\x1b[30;43m" /* black with yellow background */
+	ColorMatch      = "\x1b[30;43m" /* blue with white background */
 
 	SeparatorColon  = ":"
 	SeparatorHyphen = "-"
